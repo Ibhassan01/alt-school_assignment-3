@@ -44,7 +44,7 @@ const App = () => {
         <p className="text-black font-extrabold text-2xl self-start">
           Samurai King Resting
         </p>
-        <div className="bg-[url(./images/dog1.png)] lg:bg-[url(./images/dog2.png)] mt-2 w-full h-64 lg:h-[500px] bg-cover bg-center flex items-end justify-start my-2">
+        <div className="bg-[url(/images/dog1.png)] lg:bg-[url(/images/dog2.png)] mt-2 w-full h-64 lg:h-[500px] bg-cover bg-center flex items-end justify-start my-2">
           <div className="bg-white text-center px-1 py-3 my-0.5">
             <p>Post of the day</p>
           </div>
