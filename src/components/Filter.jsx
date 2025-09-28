@@ -1,40 +1,56 @@
-const Filter = () => {
-    const categories = ["People", "Premium", "Pets", "Food", "Landmarks", "Cities", "Nature"]
-    const prices = ["Lower than $20", "$20 - $100", "$100 - $200", "More than $200"]
+const Filter = ({ onClose }) => {
+    const categories = ["People", "Premium", "Pets", "Food", "Landmarks", "Cities", "Nature"];
+    const prices = ["Lower than $20", "$20 - $100", "$100 - $200", "More than $200"];
+
     return (
-        <div>
-            <div className="flex py-3 px-2 justify-between md:hidden items-center">
-                <p className="font-extrabold text-2xl">Filter</p>
-                <img src="./icons/Group 33.png" alt="" />
-            </div>
-            <div className="border-b-1 border-b-gray-600 m-2">
-                <p className="m-4 font-extrabold text-2xl">Categories</p>
-                {categories.map((category, key) => (
-                    <ul className="my-4">
-                        <li key={key} for="category" className="m-4">
-                            <input type="checkbox" name="" id="category" className="mx-2" />
+        <div className="fixed inset-0 flex items-center justify-center bg-gray/70 backdrop-blur bg-opacity-50 z-50">
+            
+            <div className="bg-white w-11/12 max-w-lg rounded-lg shadow-lg px-5">
+
+                <div className="flex py-3 px-4 justify-between items-center border-b">
+                    <p className="font-extrabold text-2xl">Filter</p>
+                    <img
+                        src="./icons/Group 33.png"
+                        alt="close"
+                        className="cursor-pointer"
+                        onClick={onClose}
+                    />
+                </div>
+
+                <div className="border-b px-4 py-3">
+                    <p className="font-extrabold text-xl mb-2">Categories</p>
+                    {categories.map((category, key) => (
+                        <label key={key} className="flex items-center my-2">
+                            <input type="checkbox" className="mr-2" />
                             {category}
-                        </li>
-                    </ul>
-                ))}
-            </div>
-            <div className="m-4">
-                <p className="m-4 font-extrabold text-2xl">Prices</p>
-                {prices.map((price, key) => (
-                    <ul className="my-4">
-                        <li key={key} for="price" className="m-4">
-                            <input type="checkbox" name="" id="price" className="mx-2" />
+                        </label>
+                    ))}
+                </div>
+
+                <div className="px-4 py-3">
+                    <p className="font-extrabold text-xl mb-2">Prices</p>
+                    {prices.map((price, key) => (
+                        <label key={key} className="flex items-center my-2">
+                            <input type="checkbox" className="mr-2" />
                             {price}
-                        </li>
-                    </ul>
-                ))}
-            </div>
-            <div className="flex justify-between px-4 py-5 border-t border-t-gray-500">
-                <button className="px-8 py-2 border-3 border-black bg-white font-extrabold text-lg">CLEAR</button>
-                <button className="px-8 py-2 border-3 border-black bg-black font-extrabold text-lg text-white">SAVE</button>
+                        </label>
+                    ))}
+                </div>
+
+                <div className="flex justify-between px-4 py-4">
+                    <button className="px-8 py-2 border-2 border-black bg-white font-extrabold text-lg">
+                        CLEAR
+                    </button>
+                    <button
+                        className="px-8 py-2 border-2 border-black bg-black font-extrabold text-lg text-white"
+                        onClick={onClose}
+                    >
+                        SAVE
+                    </button>
+                </div>
             </div>
         </div>
     );
-}
+};
 
 export default Filter;

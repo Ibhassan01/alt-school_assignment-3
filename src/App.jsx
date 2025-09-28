@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import AddToCart from "./components/AddToCart";
 import About from "./components/About";
-import PhotographyHeader from "./components/PhotographyHeader";
 import PhotoCard from "./components/PhotoCard";
 import Pagination from "./components/Pagination";
 import Filter from "./components/Filter";
+import FilterSideBar from "./components/FilterSideBar";
 
-function App() {
+const App = () => {
+  const [showFilter, setShowFilter] = useState(false)
+
   const photoCards = [
     {
       bgImage: "/images/Rectangle 2.png",
@@ -38,7 +40,7 @@ function App() {
   return (
     <div className="flex h-screen flex-col lg:mx-10">
       <Header />
-      <div className="m-2 border">
+      <div className="m-2">
         <p className="text-black font-extrabold text-2xl self-start">
           Samurai King Resting
         </p>
@@ -50,14 +52,49 @@ function App() {
         <AddToCart />
 
         <About />
-        <PhotographyHeader />
-        <div className="lg:flex">
-            <Filter />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {photoCards.map((card, key) => (
-            <PhotoCard key={key} card={card} />
-          ))}
+        <div className="my-5 flex justify-between">
+            <p className="text-lg">
+                <span className="font-bold">Photography/</span>
+                <span className="text-[#656565]">Premium Photos</span>
+            </p>
+            <div className="lg:flex justify-between w-[15%] items-center hidden">
+                <div className=" flex justify-between"><img src="./icons/Group.svg" alt="sort" />
+                    <p className="text-sm text-[#656565]">
+                        Sort By</p>
+                    <select name="" id="">
+                        <option value="">Price</option>
+                        <option value="">Pets</option>
+                        <option value="">People</option>
+                    </select>
+                </div>
+            </div>
+            <img src="./icons/filter.svg" alt="filter" className="lg:hidden" 
+            onClick={() => setShowFilter(!showFilter)}
+            />
         </div>
+
+        <div className="lg:flex lg:gap-6">
+          
+          <div className="lg:w-1/4 lg:flex-shrink-0">
+
+            {showFilter && (
+              <div className="lg:hidden">
+                <Filter onClose={() => setShowFilter(false)} />
+              </div>
+            )}
+            
+            <div className="hidden lg:block">
+              <FilterSideBar />
+            </div>
+          </div>
+
+          <div className="flex-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+              {photoCards.map((card, key) => (
+                <PhotoCard key={key} card={card} />
+              ))}
+            </div>
+          </div>
         </div>
 
         <Pagination />
@@ -65,5 +102,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
