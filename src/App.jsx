@@ -38,15 +38,20 @@ const App = () => {
   ];
 
   return (
-    <div className="flex h-screen flex-col lg:mx-10">
+    <div className="flex h-screen flex-col lg:mx-10 font-archivo">
       <Header />
       <div className="m-2">
-        <p className="text-black font-extrabold text-2xl self-start">
+        <div className=" flex justify-between items-center">
+          <p className="text-black font-extrabold text-2xl self-start font-archivo">
           Samurai King Resting
         </p>
+          <button className="border text-sm p-3 font-light text-white bg-black sm:hidden lg:block">
+            ADD TO CART
+          </button>
+        </div>
         <div className="bg-[url(/images/dog1.png)] lg:bg-[url(/images/dog2.png)] mt-2 w-full h-64 lg:h-[500px] bg-cover bg-center flex items-end justify-start my-2">
           <div className="bg-white text-center px-1 py-3 my-0.5">
-            <p>Post of the day</p>
+            <p className="font-archivo">Photo of the day</p>
           </div>
         </div>
         <AddToCart />
